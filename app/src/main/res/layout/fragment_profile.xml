@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Top Navbar (same as other fragments) -->
+    <include
+        android:id="@+id/headerNavbar"
+        layout="@layout/header_navbar" />
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Profile Box -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:padding="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp">
+
+                <!-- Profile Image -->
+                <ImageView
+                    android:id="@+id/imageProfile"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/profileicon"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="Profile Image" />
+
+                <!-- Name -->
+                <TextView
+                    android:id="@+id/tvName"
+                    android:text="Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+                <!-- Email -->
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+                <!-- Edit Profile Button -->
+                <Button
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:backgroundTint="#D32F2F"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- About Us Box -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:id="@+id/tvAboutHeading"
+                    android:text="About Us - KhetMitra🌾"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="#0D0C0C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tvAboutDescription"
+                    android:text="KhetMitra empowers farmers with digital solutions for smart farming. Our platform provides real-time insights, expert advice, and precision farming tools for enhanced productivity and profitability."
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <!-- Feedback Button -->
+                <Button
+                    android:id="@+id/btnFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feedback"
+                    android:textSize="18sp"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

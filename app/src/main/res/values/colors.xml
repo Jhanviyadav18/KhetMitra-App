@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green_active">#4CAF50</color>   <!-- Active green -->
+    <color name="green_inactive">#9E9E9E</color> <!-- Inactive grey -->
+    <color name="green">#2E7D32</color>
+    <color name="footer_light_green">#83EB87</color>  <!-- Dark green footer background -->
+
+
+
+</resources>

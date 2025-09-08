@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9">
+
+    <!-- Top Navbar -->
+    <include
+        android:id="@+id/headerNavbar"
+        layout="@layout/header_navbar" />
+
+    <!-- Centered Text -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Community Fragment"
+            android:textSize="24sp"
+            android:textColor="#2E7D32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Fixed Action Buttons (Bottom Right) -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/call_bg"
+            android:src="@drawable/ic_call"
+            android:contentDescription="Call"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/share_bg"
+            android:src="@drawable/ic_share"
+            android:contentDescription="Share"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/btnChat"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/chat_bg"
+            android:src="@drawable/ic_chat"
+            android:contentDescription="Chat"
+            android:tint="@android:color/white" />
+    </LinearLayout>
+</FrameLayout>

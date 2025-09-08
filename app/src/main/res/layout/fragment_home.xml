@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9">
+
+    <!-- Top Navbar -->
+    <include
+        android:id="@+id/headerNavbar"
+        layout="@layout/header_navbar" />
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_marginTop="80dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Weather & Recommendations Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="186dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_card_bg"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Location and Temperature aligned -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="6dp"
+                        android:text="Greater Noida"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCurrentTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="27°C"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvCurrentCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Foggy"
+                    android:textColor="#555555"
+                    android:textSize="16sp" />
+
+                <!-- Horizontal Scroll Recommendations -->
+                <HorizontalScrollView
+                    android:id="@+id/recommendationScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/recommendationContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Recommendation Items -->
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_card_bg_light"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/irrigation"
+                                android:tint="#2E7D32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Irrigation"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_card_bg_light"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/spray"
+                                android:tint="#2E7D32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Spraying"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_card_bg_light"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/light"
+                                android:tint="#2E7D32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Sunlight"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_card_bg_light"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/grain"
+                                android:tint="#2E7D32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Grain"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_card_bg_light"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/medicine"
+                                android:tint="#2E7D32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Medicine"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <!-- Banner ViewPager -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/bannerViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"/>
+
+            <!-- Heading Text: "Heal your crop" -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heal Your Crop"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:padding="0dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <!-- Box with Icons + Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/box_background"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="3">
+
+                    <!-- Camera -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/icon_camera"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/takepicture"
+                            android:contentDescription="Camera" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Open Camera"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Diagnose -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/icon_diagnose"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/seediagnosis"
+                            android:contentDescription="Diagnose" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See Diagnose"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Medicine -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/icon_medicine"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/getmedicine"
+                            android:contentDescription="Medicine" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Get Medicine"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_take_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Take a Picture"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+
+
+            <!-- Crop Health Sensor Boxes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <!-- First row: 3 boxes -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- pH Level -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_card_bg"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/phsensor"
+                            android:tint="#2E7D32"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pH Level"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6.64"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- NPK -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_card_bg"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/npksensor"
+                            android:tint="#2E7D32"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NPK"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N=18,P=30,K=61"
+                            android:textColor="#000"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- Temperature -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_card_bg"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/temperaturesensor"
+                            android:tint="#2E7D32"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temperature"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="27°C"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Second row: 2 boxes -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <!-- Electrical Conductivity -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_card_bg"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/conductivitysensor"
+                            android:tint="#2E7D32"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Electrical Conductivity"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1.87 S/m"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- Moisture -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_card_bg"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/humiditysensor"
+                            android:tint="#2E7D32"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Humidity"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="35%"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Floating Action Buttons -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/call_bg"
+            android:src="@drawable/ic_call"
+            android:tint="@android:color/white"/>
+
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/share_bg"
+            android:src="@drawable/ic_share"
+            android:tint="@android:color/white"/>
+
+        <ImageButton
+            android:id="@+id/btnChat"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/chat_bg"
+            android:src="@drawable/ic_chat"
+            android:tint="@android:color/white"/>
+    </LinearLayout>
+
+</FrameLayout>

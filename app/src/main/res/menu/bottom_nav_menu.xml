@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/cropicon"
+        android:title="Your Crop"/>
+    <item
+        android:id="@+id/nav_community"
+        android:icon="@drawable/communityicon"
+        android:title="Community"/>
+    <item
+        android:id="@+id/nav_market"
+        android:icon="@drawable/marketicon"
+        android:title="Market"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profileicon"
+        android:title="Profile"/>
+</menu>

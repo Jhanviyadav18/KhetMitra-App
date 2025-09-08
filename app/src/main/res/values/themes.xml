@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KhetiMitra" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.KhetiMitra" parent="Base.Theme.KhetiMitra" />
+    <color name="colorPrimary">#4CAF50</color> <!-- green -->
+    <color name="colorPrimaryVariant">#388E3C</color> <!-- dark green -->
+    <color name="colorAccent">#81C784</color> <!-- light green -->
+
+</resources>

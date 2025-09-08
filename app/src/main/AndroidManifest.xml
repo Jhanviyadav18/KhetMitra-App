@@ -1,0 +1,33 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.khetimitra">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/khetimitra"
+        android:label="KhetMitra"
+        android:roundIcon="@drawable/khetimitra"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KhetiMitra">
+
+        <!-- Launcher Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Main Activity containing all fragments -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- Other Activities if used -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
