@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fixed Top Navbar -->
+    <include
+        android:id="@+id/headerNavbar"
+        layout="@layout/header_navbar" />
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4CAF50"
+        android:layout_margin="16dp"
+        android:drawableStart="@drawable/backic"
+        android:paddingStart="12dp"
+        android:drawablePadding="8dp"/>
+
+    <!-- Scrollable Feedback Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
+
+            <!-- Heading -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="We Value Your Feedback 🌾"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please share your thoughts, suggestions, or issues with us. Your feedback helps us improve KhetMitra."
+                android:textSize="17sp"
+                android:textColor="#555555"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Feedback Input Box -->
+            <EditText
+                android:id="@+id/etFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:hint="Type your feedback here..."
+                android:background="@drawable/edit_text_bg"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:gravity="top|start"
+                android:layout_marginBottom="24dp"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"/>
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btnSubmitFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit Feedback"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:backgroundTint="#4CAF50"
+                android:elevation="4dp"
+                android:padding="14dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Thank You Text (Initially Hidden) -->
+            <TextView
+                android:id="@+id/tvThankYou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thank you for your feedback!"
+                android:textSize="16sp"
+                android:textColor="#2E7D32"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

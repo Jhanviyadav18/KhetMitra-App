@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Fixed Top Navbar -->
+    <include
+        android:id="@+id/headerNavbar"
+        layout="@layout/header_navbar" />
+
+    <!-- Scrollable Form Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Card-style Container without top margin (zero gap) -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:elevation="4dp"
+            android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="24dp">
+
+        <!-- Heading with balanced margin -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Your Profile"
+            android:textColor="#333333"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Full Name -->
+
+            <EditText
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:padding="14dp"
+                android:textSize="16sp"
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginBottom="12dp" />
+
+        <!-- Phone Number -->
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+
+        <!-- Age -->
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Age"
+            android:inputType="number"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+
+        <!-- Email Address -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+
+<!--        &lt;!&ndash; Password &ndash;&gt;-->
+<!--        <EditText-->
+<!--            android:id="@+id/etPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:background="@drawable/edit_text_bg"-->
+<!--            android:hint="Password"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:padding="14dp"-->
+<!--            android:textSize="16sp"/>-->
+
+        <!-- State -->
+        <EditText
+            android:id="@+id/etState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="State"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+
+        <!-- District -->
+        <EditText
+            android:id="@+id/etDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="District"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+
+        <!-- Crops Growing -->
+        <EditText
+            android:id="@+id/etCropsGrowing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Crops You Are Growing"
+        android:padding="14dp"
+        android:textSize="16sp"/>
+
+        <!-- Save Profile Button -->
+        <Button
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#4CAF50"
+            android:text="Save Profile"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:padding="14dp"
+            android:elevation="2dp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>
+    </LinearLayout>

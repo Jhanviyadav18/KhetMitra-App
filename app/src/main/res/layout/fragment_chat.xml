@@ -7,37 +7,37 @@
 
     <!-- Top Navbar with green background -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="68dp"
         android:background="#2E7D32"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingHorizontal="8dp">
 
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/circle_green_bg"
-        android:padding="8dp"
-        android:src="@drawable/backic"
-        android:contentDescription="Back" />
+            android:background="@drawable/rounded_card_bg_light"
+            android:contentDescription="Back"
+            android:padding="8dp"
+            android:src="@drawable/backic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AI ChatBox"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:text="KhetMitra AI"
             android:textColor="@android:color/white"
-            android:layout_marginStart="16dp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Chat messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="517dp"
         android:layout_weight="1"
         android:padding="8dp"
         android:scrollbars="vertical" />
@@ -48,15 +48,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#C8E6C9"
-        android:padding="8dp">
+        android:padding="10dp">
 
         <EditText
             android:id="@+id/inputMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message"
             android:background="@drawable/edittext_bg"
+            android:hint="Type a message"
             android:padding="12dp" />
 
         <ImageButton
@@ -67,6 +67,6 @@
             android:background="@color/green"
             android:tint="@android:color/white"
             android:contentDescription="Send"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="10dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvMarket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Market"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvCommodity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commodity"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹0"
+        android:textSize="14sp"
+        android:textColor="@android:color/holo_green_dark" />
+</LinearLayout>

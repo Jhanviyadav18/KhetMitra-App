@@ -1,18 +1,27 @@
 <resources>
-    <!-- Active item -->
+    <!-- App Theme -->
+    <style name="Theme.KhetiMitra" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#2E7D32</item>
+        <item name="colorPrimaryVariant">#388E3C</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#4CAF50</item>
+        <item name="colorSecondaryVariant">#388E3C</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:windowBackground">#E8F5E9</item>
+    </style>
+
+    <!-- Bottom Navigation Styles -->
     <style name="BottomNavActive" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Inactive item -->
     <style name="BottomNavInactive" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/green</item>
     </style>
 
-    <!-- General BottomNav Text Style -->
     <style name="BottomNavTextStyle" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/white</item>

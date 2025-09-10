@@ -1,4 +1,3 @@
-<!-- res/layout/header_navbar.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
@@ -31,14 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
-    <ImageView
-        android:id="@+id/searchIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/searchicon"
-        android:contentDescription="Search"
-        android:tint="@android:color/white"
-        android:layout_marginEnd="16dp"/>
+    <TextView
+        android:id="@+id/helpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <ImageView
         android:id="@+id/menuIcon"
@@ -46,5 +48,7 @@
         android:layout_height="24dp"
         android:src="@drawable/menuicon"
         android:contentDescription="Menu"
-        android:tint="@android:color/white"/>
+        android:tint="@android:color/white"
+        android:clickable="true"
+        android:focusable="true"/>
 </LinearLayout>

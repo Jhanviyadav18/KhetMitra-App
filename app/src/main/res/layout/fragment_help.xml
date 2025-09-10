@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#E8F5E9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Help Request"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="State"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="District"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etIssue"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="Describe your issue"
+            android:gravity="top"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnSubmitRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Request"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="12dp"/>
+    </LinearLayout>
+</ScrollView>

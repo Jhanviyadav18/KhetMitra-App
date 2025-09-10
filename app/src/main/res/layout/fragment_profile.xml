@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
 
-    <!-- Top Navbar (same as other fragments) -->
+    <!-- Top Navbar -->
     <include
         android:id="@+id/headerNavbar"
         layout="@layout/header_navbar" />
@@ -19,51 +19,142 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:padding="24dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-            <!-- Profile Box -->
+            <!-- Profile Card -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_box"
+                android:background="@drawable/bg_message_user"
                 android:padding="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp">
+                android:elevation="4dp"
+                android:layout_marginBottom="16dp">
 
                 <!-- Profile Image -->
                 <ImageView
                     android:id="@+id/imageProfile"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/profileicon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/addprofile"
                     android:layout_gravity="center"
                     android:layout_marginBottom="16dp"
-                    android:contentDescription="Profile Image" />
+                    android:contentDescription="Profile Image"
+                    android:background="@drawable/circle_white_bg"
+                    android:scaleType="centerCrop"/>
 
                 <!-- Name -->
                 <TextView
                     android:id="@+id/tvName"
-                    android:text="Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
+                    android:text="Full Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- Email -->
                 <TextView
                     android:id="@+id/tvEmail"
-                    android:text="Email"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Phone -->
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Other Info -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+                        <TextView
+                            android:text="Age: "
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvAge"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+                        <TextView
+                            android:text="State: "
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvState"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+                        <TextView
+                            android:text="District: "
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvDistrict"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+                        <TextView
+                            android:text="Crops: "
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvCrops"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <!-- Edit Profile Button -->
                 <Button
@@ -72,8 +163,8 @@
                     android:layout_height="wrap_content"
                     android:text="Edit Profile"
                     android:backgroundTint="#4CAF50"
-                    android:textColor="@android:color/white"/>
-
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"/>
             </LinearLayout>
 
             <!-- Logout Button -->
@@ -91,7 +182,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_box"
+                android:background="@drawable/bg_message_user"
                 android:padding="16dp"
                 android:layout_marginBottom="24dp">
 
@@ -126,7 +217,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"/>
             </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>

@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+// 🔹 Import all fragments in the same package
+import com.example.khetimitra.HomeFragment
+import com.example.khetimitra.CommunityFragment
+import com.example.khetimitra.MarketFragment
+import com.example.khetimitra.ProfileFragment
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Make sure activity_main.xml has fragmentContainer
+        setContentView(R.layout.activity_main) // Your LinearLayout XML
 
         // Load HomeFragment by default
         replaceFragment(HomeFragment())
@@ -27,10 +33,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Function to replace fragments in the container
+    // Safe function to replace fragments in the container
     private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
-            .commit()
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+        if (currentFragment?.javaClass != fragment.javaClass) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit()
+        }
     }
 }
