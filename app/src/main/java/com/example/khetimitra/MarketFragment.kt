@@ -35,15 +35,15 @@ class MarketFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_market, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Set all EditText / AutoCompleteTextView text color to black programmatically
-        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+        // ✅ Set all EditText / AutoCompleteTextView text color safely
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
 
         // Bind views
         etState = view.findViewById(R.id.etSelectState)

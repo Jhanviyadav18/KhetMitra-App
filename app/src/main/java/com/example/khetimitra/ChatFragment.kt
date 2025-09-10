@@ -20,8 +20,8 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Set all EditText text color to black and hint gray
-        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+        // ✅ Fix: pass root view instead of Fragment
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
 
         // Back button
         view.findViewById<ImageView>(R.id.backButton).setOnClickListener {

@@ -12,7 +12,7 @@ class CommunityFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cropdata, container, false)
     }
@@ -20,8 +20,8 @@ class CommunityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Set all EditText text color to black programmatically
-        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+        // ✅ Set all EditText text color to black safely
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
 
         // 🔹 Help icon click listener
         val helpText = view.findViewById<TextView>(R.id.helpText)

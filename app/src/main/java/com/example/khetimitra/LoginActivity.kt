@@ -19,17 +19,20 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
-        // ✅ Set all EditText text color to black programmatically
+        // Set all EditText colors
         setAllEditTextColors(findViewById(R.id.rootLayout))
 
         val sharedPref = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
-        if (isLoggedIn) {
-            startActivity(Intent(this, MainActivity::class.java))
+
+        // If already logged in, go to MainActivity safely
+        if (sharedPref.getBoolean("isLoggedIn", false)) {
+            startActivity(Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
             finish()
+            return
         }
 
         val rootLayout = findViewById<View>(R.id.rootLayout)
@@ -40,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
         hideKeyboardOnTouchOutside(rootLayout)
 
-        // --- Clickable register text ---
+        // Clickable "Register here" text
         val text = "New user? Register here"
         val spannable = SpannableString(text)
         val clickableSpan = object : ClickableSpan() {
@@ -53,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         tvRegister.text = spannable
         tvRegister.movementMethod = LinkMovementMethod.getInstance()
 
-        // --- Login logic ---
+        // Login button logic
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -73,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // --- Recursively set EditText colors ---
+    // Recursively set EditText colors
     private fun setAllEditTextColors(view: View) {
         if (view is EditText) {
             view.setTextColor(Color.BLACK)
@@ -85,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // --- Hide keyboard logic ---
+    // Hide keyboard when touching outside EditText
     private fun hideKeyboardOnTouchOutside(view: View) {
         if (view !is EditText) {
             view.setOnTouchListener { _, _ ->
@@ -102,7 +105,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun hideKeyboard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        val currentFocusView = currentFocus ?: View(this)
-        imm.hideSoftInputFromWindow(currentFocusView.windowToken, 0)
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken ?: View(this).windowToken, 0)
     }
 }

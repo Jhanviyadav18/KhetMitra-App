@@ -21,11 +21,19 @@ class EditProfileFragment : Fragment() {
     private lateinit var etCropsGrowing: EditText
     private lateinit var btnSaveProfile: Button
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Set all EditText / input fields text color to black
-        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+        // ✅ Fix: pass root view, not fragment
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
 
         etFullName = view.findViewById(R.id.etFullName)
         etPhoneNumber = view.findViewById(R.id.etPhoneNumber)
@@ -84,6 +92,6 @@ class EditProfileFragment : Fragment() {
         }
 
         Toast.makeText(requireContext(), "Profile Saved Successfully!", Toast.LENGTH_SHORT).show()
-        parentFragmentManager.popBackStack() // Return to ProfileFragment
+        parentFragmentManager.popBackStack() // ✅ Return to ProfileFragment
     }
 }

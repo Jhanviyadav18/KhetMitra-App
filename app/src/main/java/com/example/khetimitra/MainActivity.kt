@@ -6,22 +6,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-// 🔹 Import all fragments in the same package
-import com.example.khetimitra.HomeFragment
-import com.example.khetimitra.CommunityFragment
-import com.example.khetimitra.MarketFragment
-import com.example.khetimitra.ProfileFragment
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Your LinearLayout XML
+        setContentView(R.layout.activity_main)
 
         // Load HomeFragment by default
         replaceFragment(HomeFragment())
 
-        // Setup BottomNavigationView
+        // Bottom Navigation setup
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -33,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // ✅ Automatically set EditText colors for all fragments
+        // ✅ Safe EditText color setting for any fragment
         supportFragmentManager.registerFragmentLifecycleCallbacks(
             object : FragmentManager.FragmentLifecycleCallbacks() {
                 override fun onFragmentViewCreated(
@@ -43,19 +37,24 @@ class MainActivity : AppCompatActivity() {
                     savedInstanceState: Bundle?
                 ) {
                     super.onFragmentViewCreated(fm, f, v, savedInstanceState)
-                    (application as KhetiMitraApp).setEditTextColors(f)
+                    try {
+                        // Call the view-based function, NOT the fragment one
+                        (application as KhetiMitraApp).setEditTextColors(v)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }, true
         )
     }
 
-    // Safe function to replace fragments in the container
+    // Safe function to replace fragments
     private fun replaceFragment(fragment: Fragment) {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
         if (currentFragment?.javaClass != fragment.javaClass) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
-                .commit()
+                .commitAllowingStateLoss() // safer for lifecycle crashes
         }
     }
 }
