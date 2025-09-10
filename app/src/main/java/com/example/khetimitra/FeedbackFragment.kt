@@ -16,15 +16,11 @@ class FeedbackFragment : Fragment() {
     private lateinit var btnSubmitFeedback: Button
     private lateinit var btnBack: Button
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_feedback, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // ✅ Set all EditText text color to black globally
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
 
         etFeedback = view.findViewById(R.id.etFeedback)
         btnSubmitFeedback = view.findViewById(R.id.btnSubmitFeedback)
@@ -52,5 +48,12 @@ class FeedbackFragment : Fragment() {
                 etFeedback.text.clear()
             }
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_feedback, container, false)
     }
 }

@@ -9,6 +9,13 @@ import com.example.khetimitra.R
 
 class HelpFragment : Fragment() {
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // ✅ Set all EditText text color to black globally if any added in future
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

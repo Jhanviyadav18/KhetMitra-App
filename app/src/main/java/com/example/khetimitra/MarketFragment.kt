@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khetimitra.R
 import com.example.khetimitra.adapter.MarketAdapter
 import com.example.khetimitra.model.MandiResponse
 import com.example.khetimitra.network.ApiClient
@@ -31,15 +30,20 @@ class MarketFragment : Fragment() {
     private lateinit var rvMarketResults: RecyclerView
     private lateinit var marketAdapter: MarketAdapter
     private var recordList: MutableList<MandiResponse.Record> = ArrayList()
-
-    // All API records
     private var allRecords: List<MandiResponse.Record> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_market, container, false)
+        return inflater.inflate(R.layout.fragment_market, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // ✅ Set all EditText / AutoCompleteTextView text color to black programmatically
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
 
         // Bind views
         etState = view.findViewById(R.id.etSelectState)
@@ -69,11 +73,9 @@ class MarketFragment : Fragment() {
         helpText.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, HelpFragment())
-                .addToBackStack(null) // allows back navigation
+                .addToBackStack(null)
                 .commit()
         }
-
-        return view
     }
 
     private fun loadApiData() {

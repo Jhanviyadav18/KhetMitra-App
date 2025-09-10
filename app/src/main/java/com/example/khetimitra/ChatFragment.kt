@@ -17,15 +17,11 @@ class ChatFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
     private val messages = mutableListOf<Message>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_chat, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // ✅ Set all EditText text color to black and hint gray
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
 
         // Back button
         view.findViewById<ImageView>(R.id.backButton).setOnClickListener {
@@ -58,5 +54,12 @@ class ChatFragment : Fragment() {
                 recyclerView.scrollToPosition(messages.size - 1)
             }
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_chat, container, false)
     }
 }

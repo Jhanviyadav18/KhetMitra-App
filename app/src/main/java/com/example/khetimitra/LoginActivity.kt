@@ -29,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
+        // ✅ Set all EditText text color to black programmatically
+        (application as KhetiMitraApp).setEditTextColors(this)
+
         // Safe SharedPreferences check
         try {
             val sharedPref = getSharedPreferences("UserData", Context.MODE_PRIVATE)

@@ -33,6 +33,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // ✅ Set all EditText / input fields text color to black
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
+
         tvName = view.findViewById(R.id.tvName)
         tvEmail = view.findViewById(R.id.tvEmail)
         tvPhone = view.findViewById(R.id.tvPhone)

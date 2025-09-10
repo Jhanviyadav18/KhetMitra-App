@@ -3,6 +3,7 @@ package com.example.khetimitra
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // 🔹 Import all fragments in the same package
@@ -31,6 +32,21 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        // ✅ Automatically set EditText colors for all fragments
+        supportFragmentManager.registerFragmentLifecycleCallbacks(
+            object : FragmentManager.FragmentLifecycleCallbacks() {
+                override fun onFragmentViewCreated(
+                    fm: FragmentManager,
+                    f: Fragment,
+                    v: android.view.View,
+                    savedInstanceState: Bundle?
+                ) {
+                    super.onFragmentViewCreated(fm, f, v, savedInstanceState)
+                    (application as KhetiMitraApp).setEditTextColors(f)
+                }
+            }, true
+        )
     }
 
     // Safe function to replace fragments in the container

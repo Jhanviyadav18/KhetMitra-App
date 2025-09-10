@@ -23,6 +23,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        // ✅ Set all EditText text color to black programmatically
+        (application as KhetiMitraApp).setEditTextColors(this)
+
         // --- Initialize views ---
         val rootLayout = findViewById<View>(R.id.rootLayout)
         val etName = findViewById<EditText>(R.id.etName)

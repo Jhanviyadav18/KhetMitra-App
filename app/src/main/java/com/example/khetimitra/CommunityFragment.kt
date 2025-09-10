@@ -14,7 +14,14 @@ class CommunityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_cropdata, container, false)
+        return inflater.inflate(R.layout.fragment_cropdata, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // ✅ Set all EditText text color to black programmatically
+        (requireActivity().application as KhetiMitraApp).setEditTextColors(this)
 
         // 🔹 Help icon click listener
         val helpText = view.findViewById<TextView>(R.id.helpText)
@@ -24,7 +31,5 @@ class CommunityFragment : Fragment() {
                 .addToBackStack(null) // allows back navigation
                 .commit()
         }
-
-        return view
     }
 }
