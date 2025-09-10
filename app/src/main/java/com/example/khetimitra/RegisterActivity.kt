@@ -11,10 +11,7 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,9 +21,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         // ✅ Set all EditText text color to black programmatically
-        (application as KhetiMitraApp).setEditTextColors(this)
+        setAllEditTextColors(findViewById(R.id.rootLayout))
 
-        // --- Initialize views ---
         val rootLayout = findViewById<View>(R.id.rootLayout)
         val etName = findViewById<EditText>(R.id.etName)
         val etEmail = findViewById<EditText>(R.id.etEmail)
@@ -35,10 +31,9 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.btnRegister)
         val tvBackToLogin = findViewById<TextView>(R.id.tvBackToLogin)
 
-        // --- Hide keyboard when touch outside EditText ---
         hideKeyboardOnTouchOutside(rootLayout)
 
-        // --- Make "Login here" clickable ---
+        // --- Clickable "Login here" text ---
         val text = "Already registered? Login here"
         val spannable = SpannableString(text)
         val clickableSpan = object : android.text.style.ClickableSpan() {
@@ -49,19 +44,17 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = Color.parseColor("#1565C0") // Blue
+                ds.color = Color.parseColor("#1565C0")
                 ds.isUnderlineText = true
                 ds.isFakeBoldText = true
             }
         }
-
         spannable.setSpan(
             clickableSpan,
             text.indexOf("Login here"),
             text.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
         tvBackToLogin.text = spannable
         tvBackToLogin.movementMethod = LinkMovementMethod.getInstance()
 
@@ -95,7 +88,19 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    // --- Keyboard hide logic ---
+    // --- Recursively set all EditText colors ---
+    private fun setAllEditTextColors(view: View) {
+        if (view is EditText) {
+            view.setTextColor(Color.BLACK)
+            view.setHintTextColor(Color.GRAY)
+        } else if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                setAllEditTextColors(view.getChildAt(i))
+            }
+        }
+    }
+
+    // --- Hide keyboard logic ---
     private fun hideKeyboardOnTouchOutside(view: View) {
         if (view !is EditText) {
             view.setOnTouchListener { _, _ ->
@@ -103,7 +108,6 @@ class RegisterActivity : AppCompatActivity() {
                 false
             }
         }
-
         if (view is ViewGroup) {
             for (i in 0 until view.childCount) {
                 hideKeyboardOnTouchOutside(view.getChildAt(i))

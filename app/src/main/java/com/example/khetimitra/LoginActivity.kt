@@ -20,32 +20,18 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Minimal safe layout load first
-        try {
-            setContentView(R.layout.activity_login)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.makeText(this, "Layout loading failed!", Toast.LENGTH_SHORT).show()
-            return
-        }
+        setContentView(R.layout.activity_login)
 
         // ✅ Set all EditText text color to black programmatically
-        (application as KhetiMitraApp).setEditTextColors(this)
+        setAllEditTextColors(findViewById(R.id.rootLayout))
 
-        // Safe SharedPreferences check
-        try {
-            val sharedPref = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-            val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
-            if (isLoggedIn) {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
-                return
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        val sharedPref = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+        if (isLoggedIn) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
-        // Safe view references
         val rootLayout = findViewById<View>(R.id.rootLayout)
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
@@ -54,53 +40,52 @@ class LoginActivity : AppCompatActivity() {
 
         hideKeyboardOnTouchOutside(rootLayout)
 
-        // Safe clickable text
-        try {
-            val text = "New user? Register here"
-            val spannable = SpannableString(text)
-            val clickableSpan = object : ClickableSpan() {
-                override fun onClick(widget: View) {
-                    try {
-                        startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
+        // --- Clickable register text ---
+        val text = "New user? Register here"
+        val spannable = SpannableString(text)
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             }
-            spannable.setSpan(clickableSpan, 10, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(ForegroundColorSpan(Color.BLUE), 10, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            tvRegister.text = spannable
-            tvRegister.movementMethod = LinkMovementMethod.getInstance()
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
+        spannable.setSpan(clickableSpan, 10, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(ForegroundColorSpan(Color.BLUE), 10, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        tvRegister.text = spannable
+        tvRegister.movementMethod = LinkMovementMethod.getInstance()
 
-        // Safe login logic
+        // --- Login logic ---
         btnLogin.setOnClickListener {
-            try {
-                val email = etEmail.text.toString().trim()
-                val password = etPassword.text.toString().trim()
-                val sharedPref = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-                val savedEmail = sharedPref.getString("email", "")?.trim()
-                val savedPassword = sharedPref.getString("password", "")?.trim()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+            val savedEmail = sharedPref.getString("email", "")?.trim()
+            val savedPassword = sharedPref.getString("password", "")?.trim()
 
-                if (email.isNotEmpty() && password.isNotEmpty() && email == savedEmail && password == savedPassword) {
-                    sharedPref.edit().putBoolean("isLoggedIn", true).apply()
-                    Toast.makeText(this@LoginActivity, "Login Successful 🌱", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this@LoginActivity, "Invalid credentials! Please register first.", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Toast.makeText(this, "Login failed!", Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty() && password.isNotEmpty() && email == savedEmail && password == savedPassword) {
+                sharedPref.edit().putBoolean("isLoggedIn", true).apply()
+                Toast.makeText(this, "Login Successful 🌱", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                })
+                finish()
+            } else {
+                Toast.makeText(this, "Invalid credentials! Please register first.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    // --- Recursively set EditText colors ---
+    private fun setAllEditTextColors(view: View) {
+        if (view is EditText) {
+            view.setTextColor(Color.BLACK)
+            view.setHintTextColor(Color.GRAY)
+        } else if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                setAllEditTextColors(view.getChildAt(i))
+            }
+        }
+    }
+
+    // --- Hide keyboard logic ---
     private fun hideKeyboardOnTouchOutside(view: View) {
         if (view !is EditText) {
             view.setOnTouchListener { _, _ ->
