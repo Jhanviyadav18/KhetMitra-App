@@ -1,16 +1,17 @@
-package com.example.khetimitra.network
+package com.example.khetimitra
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiClient {
-    private const val BASE_URL = "https://api.data.gov.in/"
+object RetrofitClient {
+    private const val BASE_URL = "http://10.20.2.28:8083/api/" // <-- Your PC's IP & backend port
 
     val instance: ApiService by lazy {
-        Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ApiService::class.java)
+
+        retrofit.create(ApiService::class.java)
     }
 }

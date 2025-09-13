@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+
+    <TextView
+        android:id="@+id/tvCommodity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Commodity (Variety)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvMarket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Market, District, State"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvPrices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Min: ₹0 | Max: ₹0 | Modal: ₹0"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date: YYYY-MM-DD"
+        android:textSize="14sp"
+        android:textColor="#777777"/>
+</LinearLayout>

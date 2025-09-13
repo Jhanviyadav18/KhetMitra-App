@@ -353,8 +353,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7.5"
-                            android:textColor="#4CAF50"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
                             android:textStyle="bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
@@ -387,8 +387,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rich"
-                            android:textColor="#4CAF50"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
                             android:textStyle="bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
@@ -415,14 +415,14 @@
                             android:layout_height="wrap_content"
                             android:text="Temperature"
                             android:textStyle="bold"
-                            android:textSize="16sp"
+                            android:textSize="15sp"
                             android:layout_marginTop="6dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="28°C"
-                            android:textColor="#4CAF50"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
                             android:textStyle="bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
@@ -463,8 +463,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1.2 mS/cm"
-                            android:textColor="#4CAF50"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
                             android:textStyle="bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
@@ -497,14 +497,186 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="65%"
-                            android:textColor="#4CAF50"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
                             android:textStyle="bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <!-- End Crop Health Sensor Section -->
+            <!-- Environment Alerts Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Environment Alerts"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- First Row: UV Radiation & Strong Wind/Storm -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="12dp">
+
+                    <!-- UV Radiation Box -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_box_bg"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/uvsensor"
+                            android:contentDescription="UV Radiation Alert Icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UV Radiation"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="6dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Strong Wind/Storm Box -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_box_bg"
+                        android:layout_marginStart="8dp"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/windsensor"
+                            android:contentDescription="Strong Wind/Storm Alert Icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Strong Wind/Storm"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="6dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Second Row: Animal Grazing Alert & Rain Info -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Animal Grazing Alert Box -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_box_bg"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/animalsensor"
+                            android:contentDescription="Animal Grazing Alert Icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animal Grazing"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="6dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Rain Info Box -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_box_bg"
+                        android:layout_marginStart="8dp"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/rainsensor"
+                            android:contentDescription="Rain Info Icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rain Info"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="6dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device Unavailable"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 

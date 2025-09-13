@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="#F5F5F5"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,105 +10,126 @@
         android:id="@+id/headerNavbar"
         layout="@layout/header_navbar" />
 
-    <!-- Header -->
-    <TextView
+    <!-- Scrollable Content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Market - Crop Prices 🌾"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@color/teal_700"
-        android:textColor="@android:color/white"
-        android:elevation="4dp" />
-
-    <!-- Filters Section -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:elevation="6dp"
-        app:cardCornerRadius="12dp"
-        app:cardBackgroundColor="@android:color/white">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
+
+            <!-- Page Heading -->
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📈 Market - Crop Prices"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Subtitle Info -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select State, District, and Commodity to view current mandi prices for crops 🌾"
+                android:textSize="16sp"
+                android:textColor="#616161"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"/>
 
             <!-- State Dropdown -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <AutoCompleteTextView
+                android:id="@+id/etSelectState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select State"
-                android:layout_marginBottom="12dp"
-                app:startIconDrawable="@drawable/ic_state">
-
-                <AutoCompleteTextView
-                    android:id="@+id/etSelectState"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint="-- Select State --"
+                android:background="@drawable/edit_text_bg"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:textColor="#212121"
+                android:textColorHint="#9E9E9E"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:dropDownHeight="300dp"
+                android:inputType="none"/>
 
             <!-- District Dropdown -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <AutoCompleteTextView
+                android:id="@+id/etSelectDistrict"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select District"
-                android:layout_marginBottom="12dp"
-                app:startIconDrawable="@drawable/ic_district">
-
-                <AutoCompleteTextView
-                    android:id="@+id/etSelectDistrict"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint="-- Select District --"
+                android:background="@drawable/edit_text_bg"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:textColor="#212121"
+                android:textColorHint="#9E9E9E"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:dropDownHeight="300dp"
+                android:inputType="none"/>
 
             <!-- Commodity Dropdown -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <AutoCompleteTextView
+                android:id="@+id/etSelectCommodity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select Commodity"
-                android:layout_marginBottom="16dp"
-                app:startIconDrawable="@drawable/ic_crop">
-
-                <AutoCompleteTextView
-                    android:id="@+id/etSelectCommodity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint="-- Select Commodity --"
+                android:background="@drawable/edit_text_bg"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:textColor="#212121"
+                android:textColorHint="#9E9E9E"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp"
+                android:dropDownHeight="300dp"
+                android:inputType="none"/>
 
             <!-- Show Prices Button -->
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnShowPrices"
-                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Show Prices"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:icon="@drawable/searchic"
-                app:iconGravity="textStart"
-                app:iconTint="@android:color/white"
-                android:backgroundTint="@color/teal_700"
-                android:textColor="@android:color/white"/>
+                android:backgroundTint="#2E7D32"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="24dp"/>
+
+<!--            &lt;!&ndash; Info Box &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_box"-->
+<!--                android:elevation="4dp"-->
+<!--                android:padding="20dp"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginBottom="32dp">-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/tvMarketInfo"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Filtered prices will appear here after selecting filters"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="#424242"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:lineSpacingExtra="6dp"/>&ndash;&gt;-->
+<!--            </LinearLayout>-->
+
+            <!-- RecyclerView for Market Results -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMarketResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:clipToPadding="false"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- RecyclerView Results -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMarketResults"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical" />
-
+    </ScrollView>
 </LinearLayout>

@@ -1,25 +1,20 @@
 package com.example.khetimitra
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.khetimitra.adapter.MarketAdapter
-import com.example.khetimitra.model.MandiResponse
-import com.example.khetimitra.network.ApiClient
-import com.example.khetimitra.network.ApiService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.khetimitra.network.CommodityRecord
+import com.example.khetimitra.utils.IndianDistricts
+import kotlin.random.Random
 
 class MarketFragment : Fragment() {
 
@@ -29,8 +24,7 @@ class MarketFragment : Fragment() {
     private lateinit var btnShowPrices: Button
     private lateinit var rvMarketResults: RecyclerView
     private lateinit var marketAdapter: MarketAdapter
-    private var recordList: MutableList<MandiResponse.Record> = ArrayList()
-    private var allRecords: List<MandiResponse.Record> = emptyList()
+    private var recordList: MutableList<CommodityRecord> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,93 +36,89 @@ class MarketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Set all EditText / AutoCompleteTextView text color safely
-        (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
-
-        // Bind views
         etState = view.findViewById(R.id.etSelectState)
         etDistrict = view.findViewById(R.id.etSelectDistrict)
         etCommodity = view.findViewById(R.id.etSelectCommodity)
         btnShowPrices = view.findViewById(R.id.btnShowPrices)
         rvMarketResults = view.findViewById(R.id.rvMarketResults)
 
-        // Setup RecyclerView
         rvMarketResults.layoutManager = LinearLayoutManager(requireContext())
         marketAdapter = MarketAdapter(recordList)
         rvMarketResults.adapter = marketAdapter
 
-        // Load API data
-        loadApiData()
+        loadDropdownValues()
 
-        // Button click -> filter records
+        // Update district dropdown when state is selected
+        etState.setOnItemClickListener { _, _, position, _ ->
+            val selectedState = etState.adapter.getItem(position).toString()
+            updateDistricts(selectedState)
+        }
+
         btnShowPrices.setOnClickListener {
             val state = etState.text.toString().trim()
             val district = etDistrict.text.toString().trim()
             val commodity = etCommodity.text.toString().trim()
-            filterAndShowPrices(state, district, commodity)
-        }
 
-        // 🔹 Help icon click listener
-        val helpText = view.findViewById<TextView>(R.id.helpText)
-        helpText.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, HelpFragment())
-                .addToBackStack(null)
-                .commit()
+            if (state.isEmpty() || district.isEmpty() || commodity.isEmpty()) {
+                Toast.makeText(requireContext(), "Please select state, district, and commodity", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            showPrice(state, district, commodity)
         }
     }
 
-    private fun loadApiData() {
-        val apiService = ApiClient.getClient().create(ApiService::class.java)
+    private fun loadDropdownValues() {
+        val states = IndianDistricts.stateDistrictMap.keys.toList()
 
-        val call = apiService.getMandiPrices(
-            apiKey = "579b464db66ec23bdd000001f7627522131a49696da5c73f758ed0ed",
-            format = "json",
-            limit = 100
+        val commodities = listOf(
+            "Rice", "Wheat", "Maize", "Pulses", "Mustard",
+            "Cotton", "Sugarcane", "Tea", "Coffee", "Groundnut",
+            "Millets", "Barley", "Tobacco", "Potato", "Tomato"
         )
 
-        call.enqueue(object : Callback<MandiResponse> {
-            override fun onResponse(call: Call<MandiResponse>, response: Response<MandiResponse>) {
-                if (response.isSuccessful && response.body() != null) {
-                    allRecords = response.body()!!.records
-
-                    // Populate dropdowns dynamically
-                    val states = allRecords.mapNotNull { it.state }.distinct().sorted()
-                    val districts = allRecords.mapNotNull { it.district }.distinct().sorted()
-                    val commodities = allRecords.mapNotNull { it.commodity }.distinct().sorted()
-
-                    etState.setAdapter(
-                        ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, states)
-                    )
-                    etDistrict.setAdapter(
-                        ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districts)
-                    )
-                    etCommodity.setAdapter(
-                        ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, commodities)
-                    )
-                } else {
-                    Toast.makeText(requireContext(), "API returned empty response", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<MandiResponse>, t: Throwable) {
-                Log.e("API_ERROR", "Failed: ${t.message}")
-                Toast.makeText(requireContext(), "API Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    private fun filterAndShowPrices(state: String, district: String, commodity: String) {
-        val filteredList = allRecords.filter { record ->
-            (state.isEmpty() || record.state?.equals(state, ignoreCase = true) == true) &&
-                    (district.isEmpty() || record.district?.equals(district, ignoreCase = true) == true) &&
-                    (commodity.isEmpty() || record.commodity?.equals(commodity, ignoreCase = true) == true)
-        }.toMutableList()
-
-        if (filteredList.isEmpty()) {
-            Toast.makeText(requireContext(), "No records found", Toast.LENGTH_SHORT).show()
+        etState.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, states))
+        etState.dropDownHeight = 600
+        etState.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) etState.showDropDown()
         }
 
-        marketAdapter.updateData(filteredList)
+        etCommodity.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, commodities))
+        etCommodity.dropDownHeight = 600
+        etCommodity.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) etCommodity.showDropDown()
+        }
+    }
+
+    private fun updateDistricts(state: String) {
+        val districts = IndianDistricts.stateDistrictMap[state] ?: listOf()
+        etDistrict.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districts))
+        etDistrict.dropDownHeight = 600
+        etDistrict.setText("") // Clear previous selection
+        etDistrict.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) etDistrict.showDropDown()
+        }
+    }
+
+    private fun showPrice(state: String, district: String, commodity: String) {
+        val minPrice = Random.nextInt(1500, 2500)
+        val maxPrice = Random.nextInt(2501, 5000)
+        val modalPrice = Random.nextInt(minPrice, maxPrice)
+
+        recordList.clear()
+        recordList.add(
+            CommodityRecord(
+                state = state,
+                district = district,
+                market = "Local Mandi",          // Dummy market
+                commodity = commodity,
+                variety = "Standard",
+                arrival_date = "Today",
+                min_price = "₹$minPrice",
+                max_price = "₹$maxPrice",
+                modal_price = "₹$modalPrice"
+            )
+        )
+        marketAdapter.updateData(recordList)
     }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_box"
+    android:layout_marginBottom="12dp">
+
+    <TextView
+        android:id="@+id/tvCropName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crop Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#333333"/>
+
+    <TextView
+        android:id="@+id/tvCropInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How to cultivate"
+        android:textSize="14sp"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvCropPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price info"
+        android:textSize="14sp"
+        android:textColor="#2E7D32"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvHarvestTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harvest Time"
+        android:textSize="14sp"
+        android:textColor="#555555"
+        android:layout_marginTop="2dp"/>
+</LinearLayout>

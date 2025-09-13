@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -21,54 +20,73 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="24dp">
+
+            <!-- Page Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="🌱 Crop Details &amp; Cultivation Guide"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="#333333"
+                android:textColor="#212121"
                 android:gravity="center"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="20dp"/>
 
-
+            <!-- Subtitle Info -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select a crop below to explore cultivation requirements, timeline, and best practices 🌿"
+                android:text="Select a crop to explore its cultivation requirements, timeline, and best practices 🌿"
                 android:textSize="16sp"
-                android:textColor="#555555"
+                android:textColor="#616161"
                 android:gravity="center"
+                android:lineSpacingExtra="4dp"
                 android:layout_marginBottom="24dp"/>
 
-            <EditText
+            <!-- Dropdown for Crop Selection -->
+            <AutoCompleteTextView
                 android:id="@+id/etSelectCrop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="-- Select a Crop --"
                 android:background="@drawable/edit_text_bg"
-                android:padding="14dp"
-                android:textSize="16sp"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:layout_marginBottom="24dp"
-                android:focusable="false"
-                android:clickable="true" />
+                android:dropDownHeight="300dp"
+                android:inputType="none"
+                android:dropDownVerticalOffset="8dp"
+                android:dropDownAnchor="@id/etSelectCrop"/>
 
+            <!-- Crop Data Display Box -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_box"
-                android:padding="16dp"
-                android:orientation="vertical">
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_marginBottom="32dp">
 
                 <TextView
                     android:id="@+id/tvCropData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Crop data will appear here after selection."
+                    android:text="Select a crop to see detailed information here"
                     android:textSize="16sp"
-                    android:textColor="#555555"/>
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="6dp"/>
             </LinearLayout>
+
+            <!-- RecyclerView for List of Crops -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCrops"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:clipToPadding="false"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -5,9 +5,26 @@
     <color name="white">#FFFFFFFF</color>
     <color name="teal_700">#018786</color>
 
-    <!-- Custom Greens -->
-    <color name="green_active">#4CAF50</color>    <!-- Active green -->
-    <color name="green_inactive">#9E9E9E</color> <!-- Inactive grey -->
-    <color name="green">#2E7D32</color>
+    <!-- Primary App Greens -->
+    <color name="green_light">#A5D6A7</color>    <!-- Light green for backgrounds -->
+    <color name="green">#2E7D32</color>          <!-- Main brand green -->
+    <color name="green_dark">#1B5E20</color>     <!-- Dark shade for headers -->
+
+    <!-- Action States -->
+    <color name="green_active">#4CAF50</color>   <!-- Buttons / Active -->
+    <color name="green_inactive">#9E9E9E</color> <!-- Disabled state -->
+    <color name="green_pressed">#388E3C</color> <!-- Button pressed effect -->
+
+    <!-- Accent & Highlights -->
     <color name="footer_light_green">#83EB87</color>
+    <color name="green_accent">#00C853</color>  <!-- Accent highlights -->
+    <color name="green_warning">#FDD835</color> <!-- Yellow for alerts -->
+    <color name="green_error">#D32F2F</color>   <!-- Red for errors -->
+
+    <!-- Backgrounds -->
+    <color name="background_light">#F5F5F5</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="green_700">#388E3C</color>
+    <color name="shimmer_placeholder">#DDDDDD</color>
+
 </resources>
