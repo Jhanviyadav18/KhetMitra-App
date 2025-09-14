@@ -349,7 +349,7 @@ class CommunityFragment : Fragment() {
         val cropDataTv = view.findViewById<TextView>(R.id.tvCropData)
 
         cropSelector.setAdapter(adapter)
-        cropSelector.dropDownHeight = 600
+        cropSelector.dropDownHeight = 1000
 
         cropSelector.setOnClickListener {
             cropSelector.showDropDown()

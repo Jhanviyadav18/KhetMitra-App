@@ -78,13 +78,13 @@ class MarketFragment : Fragment() {
         )
 
         etState.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, states))
-        etState.dropDownHeight = 600
+        etState.dropDownHeight = 1000
         etState.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etState.showDropDown()
         }
 
         etCommodity.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, commodities))
-        etCommodity.dropDownHeight = 600
+        etCommodity.dropDownHeight = 1000
         etCommodity.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etCommodity.showDropDown()
         }
@@ -93,7 +93,7 @@ class MarketFragment : Fragment() {
     private fun updateDistricts(state: String) {
         val districts = IndianDistricts.stateDistrictMap[state] ?: listOf()
         etDistrict.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districts))
-        etDistrict.dropDownHeight = 600
+        etDistrict.dropDownHeight = 1000
         etDistrict.setText("") // Clear previous selection
         etDistrict.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etDistrict.showDropDown()
@@ -114,9 +114,9 @@ class MarketFragment : Fragment() {
                 commodity = commodity,
                 variety = "Standard",
                 arrival_date = "Today",
-                min_price = "₹$minPrice",
-                max_price = "₹$maxPrice",
-                modal_price = "₹$modalPrice"
+                min_price = "$minPrice",
+                max_price = "$maxPrice",
+                modal_price = "$modalPrice"
             )
         )
         marketAdapter.updateData(recordList)
