@@ -1,7 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#F5F5F5"
+    android:background="#FAFAFA"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -74,7 +74,7 @@
                     android:id="@+id/tvCropData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select a crop to see detailed information here"
+                    android:text="Select a crop to see detailed information here🌾"
                     android:textSize="16sp"
                     android:textColor="#424242"
                     android:lineSpacingExtra="6dp"/>
@@ -86,7 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:clipToPadding="false"/>
+                android:clipToPadding="false"
+                android:background="#FAFAFA"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
