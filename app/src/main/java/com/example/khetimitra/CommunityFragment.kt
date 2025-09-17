@@ -344,12 +344,14 @@ class CommunityFragment : Fragment() {
             "Millets", "Cotton", "Jute", "Tea", "Soybean", "Turmeric", "Ginger", "Cardamom"
         )
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cropList)
+        val adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cropList)
         val cropSelector = view.findViewById<AutoCompleteTextView>(R.id.etSelectCrop)
         val cropDataTv = view.findViewById<TextView>(R.id.tvCropData)
 
         cropSelector.setAdapter(adapter)
-        cropSelector.dropDownHeight = 1000
+        cropSelector.setDropDownBackgroundResource(android.R.color.white)  // ✅ Add this line
+        cropSelector.dropDownHeight = ViewGroup.LayoutParams.WRAP_CONTENT
 
         cropSelector.setOnClickListener {
             cropSelector.showDropDown()

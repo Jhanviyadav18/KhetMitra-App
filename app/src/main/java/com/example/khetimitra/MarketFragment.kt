@@ -54,6 +54,7 @@ class MarketFragment : Fragment() {
             updateDistricts(selectedState)
         }
 
+
         btnShowPrices.setOnClickListener {
             val state = etState.text.toString().trim()
             val district = etDistrict.text.toString().trim()
@@ -77,14 +78,18 @@ class MarketFragment : Fragment() {
             "Millets", "Barley", "Tobacco", "Potato", "Tomato"
         )
 
-        etState.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, states))
+        val stateAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, states)
+        etState.setAdapter(stateAdapter)
         etState.dropDownHeight = 1000
+        etState.setDropDownBackgroundResource(android.R.color.white)
         etState.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etState.showDropDown()
         }
 
-        etCommodity.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, commodities))
+        val commodityAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, commodities)
+        etCommodity.setAdapter(commodityAdapter)
         etCommodity.dropDownHeight = 1000
+        etCommodity.setDropDownBackgroundResource(android.R.color.white)
         etCommodity.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etCommodity.showDropDown()
         }
@@ -92,8 +97,10 @@ class MarketFragment : Fragment() {
 
     private fun updateDistricts(state: String) {
         val districts = IndianDistricts.stateDistrictMap[state] ?: listOf()
-        etDistrict.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districts))
+        val districtAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districts)
+        etDistrict.setAdapter(districtAdapter)
         etDistrict.dropDownHeight = 1000
+        etDistrict.setDropDownBackgroundResource(android.R.color.white)
         etDistrict.setText("") // Clear previous selection
         etDistrict.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) etDistrict.showDropDown()
@@ -110,7 +117,7 @@ class MarketFragment : Fragment() {
             CommodityRecord(
                 state = state,
                 district = district,
-                market = "Local Mandi",          // Dummy market
+                market = "Local Mandi",          // Dummy market name
                 commodity = commodity,
                 variety = "Standard",
                 arrival_date = "Today",

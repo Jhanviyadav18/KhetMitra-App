@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
     private var currentPage = 0
     private var scrollPos = 0
 
-    // Banner auto-scroll
     private val bannerRunnable = object : Runnable {
         override fun run() {
             if (::bannerAdapter.isInitialized && bannerAdapter.itemCount > 0) {
@@ -35,7 +34,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Recommendation scroll auto-scroll
     private val recommendationScrollRunnable = object : Runnable {
         override fun run() {
             recommendationScrollView?.let { scrollView ->
@@ -69,9 +67,7 @@ class HomeFragment : Fragment() {
 
         // Menu icon click listener
         val menuIcon = view.findViewById<ImageView>(R.id.menuIcon)
-        menuIcon.setOnClickListener {
-            showMenu(it)
-        }
+        menuIcon.setOnClickListener { showMenu(it) }
 
         // Banner setup
         bannerViewPager = view.findViewById(R.id.bannerViewPager)
@@ -131,14 +127,12 @@ class HomeFragment : Fragment() {
     private fun showMenu(anchor: View) {
         val menuItems = listOf("Diagnose", "Crop Data", "Market", "Profile")
 
-        // Create a LinearLayout container for the menu
         val container = LinearLayout(requireContext()).apply {
             orientation = LinearLayout.VERTICAL
-            setBackgroundResource(R.drawable.popup_menu_bg) // rounded corner background
+            setBackgroundResource(R.drawable.popup_menu_bg)
             setPadding(16, 16, 16, 16)
         }
 
-        // Add TextViews for each menu item
         menuItems.forEach { item ->
             val tv = TextView(requireContext()).apply {
                 text = item
@@ -166,12 +160,9 @@ class HomeFragment : Fragment() {
             container.addView(tv)
         }
 
-        // Create PopupWindow
         popup = PopupWindow(container, 550, ViewGroup.LayoutParams.WRAP_CONTENT, true)
         popup.isOutsideTouchable = true
         popup.elevation = 10f
-
-        // Show Popup anchored to the menu icon
         popup.showAsDropDown(anchor, 0, 10)
     }
 

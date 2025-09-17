@@ -58,7 +58,8 @@
                 android:dropDownHeight="300dp"
                 android:inputType="none"
                 android:dropDownVerticalOffset="8dp"
-                android:dropDownAnchor="@id/etSelectCrop"/>
+                android:dropDownAnchor="@id/etSelectCrop"
+                android:popupBackground="@color/white"/>
 
             <!-- Crop Data Display Box -->
             <LinearLayout
