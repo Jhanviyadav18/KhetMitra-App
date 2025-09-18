@@ -315,7 +315,7 @@
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:gravity="center"
-                     />
+                    />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -372,10 +372,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
 
                     <!-- NPK Box -->
@@ -406,10 +406,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="N=0,P=0,K=0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <!-- Temperature Box -->
@@ -440,10 +440,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -482,10 +482,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
 
                     <!-- Humidity Box -->
@@ -516,10 +516,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -577,10 +577,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
 
                     <!-- Strong Wind/Storm Box -->
@@ -611,10 +611,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="0"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -653,10 +653,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="No"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
 
                     <!-- Rain Info Box -->
@@ -687,10 +687,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device Unavailable"
-                            android:textColor="#F44336"
+                            android:text="No"
+                            android:textColor="#388E3C"
                             android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

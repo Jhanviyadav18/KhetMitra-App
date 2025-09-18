@@ -20,14 +20,10 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Fix: pass root view instead of Fragment
         (requireActivity().application as KhetiMitraApp).setEditTextColors(view)
 
-        // Back button
         view.findViewById<ImageView>(R.id.backButton).setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, HomeFragment())
-                .commit()
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         recyclerView = view.findViewById(R.id.chatRecyclerView)
@@ -41,13 +37,11 @@ class ChatFragment : Fragment() {
         sendButton.setOnClickListener {
             val text = inputMessage.text.toString()
             if (text.isNotBlank()) {
-                // User message
                 messages.add(Message(text, true))
                 messageAdapter.notifyItemInserted(messages.size - 1)
                 recyclerView.scrollToPosition(messages.size - 1)
                 inputMessage.text.clear()
 
-                // Simulate AI response
                 val aiResponse = "AI: I received \"$text\""
                 messages.add(Message(aiResponse, false))
                 messageAdapter.notifyItemInserted(messages.size - 1)

@@ -12,8 +12,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.khetimitra.SensorModels.SensorApiResponse
+import com.example.khetimitra.SensorModels.SensorData
+import com.example.khetimitra.network.RetrofitInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +31,18 @@ class HomeFragment : Fragment() {
     private var currentPage = 0
     private var scrollPos = 0
 
+    // --- Sensor Live Data ---
+    private var sensorData: SensorData? = null
+    private val sensorHandler = Handler(Looper.getMainLooper())
+    private val sensorInterval = 5000L
+    private val sensorRunnable = object : Runnable {
+        override fun run() {
+            fetchSensorData()
+            sensorHandler.postDelayed(this, sensorInterval)
+        }
+    }
+
+    // --- Banner & Recommendation Runnables ---
     private val bannerRunnable = object : Runnable {
         override fun run() {
             if (::bannerAdapter.isInitialized && bannerAdapter.itemCount > 0) {
@@ -56,20 +75,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Help icon click listener
-        val helpText = view.findViewById<TextView>(R.id.helpText)
-        helpText.setOnClickListener {
+        // --- Help Icon ---
+        view.findViewById<TextView>(R.id.helpText)?.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, HelpFragment())
                 .addToBackStack(null)
                 .commit()
         }
 
-        // Menu icon click listener
-        val menuIcon = view.findViewById<ImageView>(R.id.menuIcon)
-        menuIcon.setOnClickListener { showMenu(it) }
+        // --- Menu Icon ---
+        view.findViewById<ImageView>(R.id.menuIcon)?.setOnClickListener { showMenu(it) }
 
-        // Banner setup
+        // --- Banner Setup ---
         bannerViewPager = view.findViewById(R.id.bannerViewPager)
         val bannerImages = listOf(
             R.drawable.banner1,
@@ -80,20 +97,22 @@ class HomeFragment : Fragment() {
         bannerAdapter = BannerAdapter(bannerImages)
         bannerViewPager.adapter = bannerAdapter
 
-        // Recommendation Scroll
+        // --- Recommendation Scroll ---
         recommendationScrollView = view.findViewById(R.id.recommendationScrollView)
 
-        // Floating Action Buttons
+        // --- Floating Action Buttons ---
         view.findViewById<ImageButton>(R.id.btnCall)?.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+1234567890"))
             startActivity(intent)
         }
+
         view.findViewById<ImageButton>(R.id.btnShare)?.setOnClickListener {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this awesome app!")
             startActivity(Intent.createChooser(shareIntent, "Share via"))
         }
+
         view.findViewById<ImageButton>(R.id.btnChat)?.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragmentContainer, ChatFragment())
@@ -101,7 +120,7 @@ class HomeFragment : Fragment() {
                 ?.commit()
         }
 
-        // Live Field Diagnosis Section
+        // --- Live Field Diagnosis Section ---
         view.findViewById<LinearLayout>(R.id.icon_camera_box)?.setOnClickListener { openCamera(101) }
         view.findViewById<LinearLayout>(R.id.icon_diagnose_box)?.setOnClickListener {
             Toast.makeText(requireContext(), "See Diagnose clicked", Toast.LENGTH_SHORT).show()
@@ -110,8 +129,43 @@ class HomeFragment : Fragment() {
             Toast.makeText(requireContext(), "Get Medicine clicked", Toast.LENGTH_SHORT).show()
         }
 
-        // Take a picture button
+        // --- Take a picture button ---
         view.findViewById<Button>(R.id.btn_take_picture)?.setOnClickListener { openCamera(100) }
+
+        // --- Start Live Sensor Fetch ---
+        sensorHandler.post(sensorRunnable)
+    }
+
+    private fun fetchSensorData() {
+        RetrofitInstance.api.getLatestSensorData().enqueue(object : Callback<SensorApiResponse> {
+            override fun onResponse(
+                call: Call<SensorApiResponse>,
+                response: Response<SensorApiResponse>
+            ) {
+                val apiResponse = response.body()
+                if (response.isSuccessful && apiResponse?.success == true) {
+                    val newData = apiResponse.data
+                    handleSensorAlerts(newData)
+                    sensorData = newData
+                }
+            }
+
+            override fun onFailure(call: Call<SensorApiResponse>, t: Throwable) {
+                // Optional: handle error
+            }
+        })
+    }
+
+    private fun handleSensorAlerts(data: SensorData) {
+        if (data.rain == 1 && sensorData?.rain != 1) {
+            Toast.makeText(requireContext(), "🌧 बारिश शुरू!", Toast.LENGTH_SHORT).show()
+        }
+        if (data.voltage > 0.4 && (sensorData?.voltage ?: 0f) <= 0.4) {
+            Toast.makeText(requireContext(), "🌬 तेज हवा!", Toast.LENGTH_SHORT).show()
+        }
+        if (data.button == 1 && sensorData?.button != 1) {
+            Toast.makeText(requireContext(), "🚨 पशु खेत में!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun openCamera(requestCode: Int) {
@@ -136,7 +190,7 @@ class HomeFragment : Fragment() {
         menuItems.forEach { item ->
             val tv = TextView(requireContext()).apply {
                 text = item
-                setTextColor(resources.getColor(android.R.color.black))
+                setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
                 textSize = 16f
                 setPadding(16, 16, 16, 16)
                 setOnClickListener {
@@ -182,12 +236,14 @@ class HomeFragment : Fragment() {
         super.onResume()
         handler.postDelayed(bannerRunnable, 3000)
         handler.post(recommendationScrollRunnable)
+        sensorHandler.post(sensorRunnable)
     }
 
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(bannerRunnable)
         handler.removeCallbacks(recommendationScrollRunnable)
+        sensorHandler.removeCallbacks(sensorRunnable)
         recommendationScrollView = null
     }
 }

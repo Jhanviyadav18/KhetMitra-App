@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,10 @@ import retrofit2.Response
 
 class CommunityFragment : Fragment() {
 
+
+
     private lateinit var cropAdapter: CropAdapter
+
 
     private val cropInfoMap = mapOf(
         "Rice" to """
@@ -361,5 +365,6 @@ class CommunityFragment : Fragment() {
             val selectedCrop = adapter.getItem(position)
             cropDataTv.text = cropInfoMap[selectedCrop] ?: "No data available for $selectedCrop"
         }
+
     }
 }
